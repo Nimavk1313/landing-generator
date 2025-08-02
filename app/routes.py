@@ -86,6 +86,10 @@ def export_emails():
 def editor():
     return render_template('editor.html')
 
+@app.route('/test_editor')
+def test_editor():
+    return render_template('test_editor.html')
+
 @app.route('/api/save_page', methods=['POST'])
 @login_required
 def save_page():
