@@ -1,0 +1,18 @@
+/* Basic styling will be added here later */
+
+body {
+    font-family: sans-serif;
+    margin: 0;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem;
+    background-color: #f8f8f8;
+    border-bottom: 1px solid #ddd;
+}
+
+main {
+    padding: 1rem;
+}

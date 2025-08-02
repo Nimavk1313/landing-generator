@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+    <h2>Welcome, {{ current_user.username }}!</h2>
+
+    <section class="dashboard-main">
+        <div>
+            <h3>Your LinkFolio URL:</h3>
+            <p><a href="{{ url_for('profile', username=current_user.username) }}" target="_blank">linkfol.io/{{ current_user.username }}</a></p>
+            <a href="{{ url_for('editor') }}" class="btn-primary">Edit Your Page</a>
+        </div>
+    </section>
+
+    <section class="analytics">
+        <h3>Your Analytics</h3>
+        <div class="analytics-cards">
+            <div>
+                <h4>Total Page Views</h4>
+                <p>{{ page.impressions }}</p>
+            </div>
+            <div>
+                <h4>Total Link Clicks</h4>
+                <p>{{ page.clicks }}</p>
+            </div>
+        </div>
+    </section>
+
+     <section class="email-list">
+        <h3>Collected Emails</h3>
+        <a href="{{ url_for('export_emails') }}">Export as .CSV</a>
+        <ul>
+            {% for email in emails %}
+                <li>{{ email }}</li>
+            {% endfor %}
+        </ul>
+    </section>
+{% endblock %}

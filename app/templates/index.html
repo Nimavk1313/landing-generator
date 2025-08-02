@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block title %}Welcome to LinkFolio{% endblock %}
+
+{% block content %}
+    <header>
+        <h1>Your One Link for Everything</h1>
+        <p>Create a beautiful, simple, and powerful landing page for your creative work.</p>
+        <a href="{{ url_for('signup') }}" class="btn-primary">Get Started for Free</a>
+    </header>
+
+    <section class="features">
+        <div>
+            <h2>Simple Editor</h2>
+            <p>Build your page in minutes with our intuitive drag-and-drop editor.</p>
+        </div>
+        <div>
+            <h2>Beautiful Templates</h2>
+            <p>Choose from a selection of elegant, professionally designed templates.</p>
+        </div>
+        <div>
+            <h2>Track Your Growth</h2>
+            <p>See how many people visit your page and click your links.</p>
+        </div>
+    </section>
+{% endblock %}

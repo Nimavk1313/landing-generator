@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ user.username }}'s Page</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="profile-container">
+        <h1>{{ user.username }}</h1>
+        <div class="blocks-container">
+            {% for block in content %}
+                <div class="block">
+                    {% if block.type == 'link' %}
+                        <a href="{{ block.url }}" class="link-block" target="_blank" data-user-id="{{ user.id }}">{{ block.title }}</a>
+                    {% elif block.type == 'text' %}
+                        <p>{{ block.text }}</p>
+                    {% elif block.type == 'video' %}
+                        <iframe width="560" height="315" src="{{ block.url.replace('watch?v=', 'embed/') }}" frameborder="0" allowfullscreen></iframe>
+                    {% endif %}
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <script>
+        document.querySelectorAll('.link-block').forEach(link => {
+            link.addEventListener('click', () => {
+                fetch('/api/track_click', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ user_id: link.dataset.userId })
+                });
+            });
+        });
+    </script>
+</body>
+</html>

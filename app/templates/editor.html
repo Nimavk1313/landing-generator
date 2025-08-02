@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block title %}Page Editor{% endblock %}
+
+{% block content %}
+    <div class="editor-container">
+        <div class="editor-controls">
+            <h2>Editor Controls</h2>
+            <button id="add-link-block">Add Link</button>
+            <button id="add-text-block">Add Text</button>
+            <button id="add-video-block">Add Video</button>
+            <hr>
+            <button id="save-page">Save Page</button>
+        </div>
+        <div class="editor-preview">
+            <h2>Live Preview</h2>
+            <div id="page-blocks">
+                <!-- Blocks will be added here dynamically -->
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.0/Sortable.min.js"></script>
+    <script src="{{ url_for('static', filename='editor.js') }}"></script>
+{% endblock %}
